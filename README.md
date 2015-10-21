@@ -6,7 +6,7 @@ Inspired by this [article](http://sassbreak.com/viewport-relative-headings-with-
 ## The code
 ```sass
 @mixin vw-with-fallback($font-sizes, $vw-base) {
-	$vw-context: (1000*.01) * 1px;
+	$vw-context: (1280*.01) * 1px;
 	
 	@each $list in $font-sizes {
 		$i: index($font-sizes, $list);
@@ -41,10 +41,10 @@ Inspired by this [article](http://sassbreak.com/viewport-relative-headings-with-
 ## Usage
 ```sass
 $hed-font-sizes:
-	1280px 9.625em 'use-vw',
-	1024px 9.625em 'use-vw',
-	767px 4.2em 'use-vw',
-	400px 4.2em 'no-vw';
+	1281px 10em 'use-vw',
+	1280px 8em 'use-vw',
+	767px 6em 'use-vw',
+	400px 5em 'no-vw';
 	
 h1 {
     @include vw-with-fallback($hed-font-sizes, 100px);
@@ -58,7 +58,7 @@ h1 {
 
 ### In the @include
 + The first argument is the list, the contents of which is explained above
-+ The second argument is used to calculate vw. Sending 100px to the mixin means that, at a window width of 1000px (the $vw-context), the h1 should have a font size of 100px. You can make the $vw-context whatever value you want. (I encourage you to read the Sass Break [article](http://sassbreak.com/viewport-relative-headings-with-sass/) about this)
++ The second argument is used to calculate vw. Sending 100px to the mixin means that, at a window width of 1280px (the $vw-context), the h1 should have a font size of 100px. You can make the $vw-context whatever value you want. (I encourage you to read the Sass Break [article](http://sassbreak.com/viewport-relative-headings-with-sass/) about this)
 
 ## Test it
 + Download the zip file
