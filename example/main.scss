@@ -1,0 +1,45 @@
+@mixin vw-with-fallback($font-sizes, $vw-base) {
+	$vw-context: (1280*.01) * 1px;
+	
+	@each $list in $font-sizes {
+		$i: index($font-sizes, $list);
+		$currem: nth($list, 2);
+		$currbp: nth($list, 1);
+		$usevw: nth($list, 3);
+		
+		@if $i == 1 {
+			@media screen and (min-width: #{$currbp}) {
+				font-size: $currem;
+				font-size: ($vw-base/$vw-context) * 1vw;
+			}
+		}
+		
+		@else {
+			@if $usevw == 'use-vw' {
+				@media screen and (max-width: #{$currbp}) {
+					font-size: $currem;
+					font-size: ($vw-base/$vw-context) * 1vw;
+				}
+			}
+			@else {
+				@media screen and (max-width: #{$currbp}) {
+					font-size: $currem;
+				}
+			}
+		}
+	}
+}
+
+html {
+    font-size: 10px;
+}
+
+$hed-font-sizes:
+	1281px 10em 'use-vw',
+	1280px 8em 'use-vw',
+	767px 6em 'use-vw',
+	400px 5em 'no-vw';
+	
+h1 {
+    @include vw-with-fallback($hed-font-sizes, 100px);
+}
