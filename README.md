@@ -7,20 +7,20 @@ Inspired by this [article](http://sassbreak.com/viewport-relative-headings-with-
 ```sass
 @mixin vw-with-fallback($font-sizes, $vw-base) {
 	$vw-context: (1280*.01) * 1px;
-	
+
 	@each $list in $font-sizes {
 		$i: index($font-sizes, $list);
 		$currem: nth($list, 2);
 		$currbp: nth($list, 1);
 		$usevw: nth($list, 3);
-		
+
 		@if $i == 1 {
 			@media screen and (min-width: #{$currbp}) {
 				font-size: $currem;
 				font-size: ($vw-base/$vw-context) * 1vw;
 			}
 		}
-		
+
 		@else {
 			@if $usevw == 'use-vw' {
 				@media screen and (max-width: #{$currbp}) {
@@ -45,7 +45,7 @@ $hed-font-sizes:
 	1280px 8em 'use-vw',
 	767px 6em 'use-vw',
 	400px 5em 'no-vw';
-	
+
 h1 {
     @include vw-with-fallback($hed-font-sizes, 100px);
 }
@@ -58,16 +58,13 @@ h1 {
 
 ### In the @include
 + The first argument is the list, the contents of which is explained above
-+ The second argument is used to calculate vw. Sending 100px to the mixin means that, at a window width of 1280px (the $vw-context), the h1 should have a font size of 100px. You can make the $vw-context whatever value you want. (I encourage you to read the Sass Break [article](http://sassbreak.com/viewport-relative-headings-with-sass/) about this)
++ The second argument is used to calculate vw. Sending 100px to the mixin means that, at a window width of 1280px (the $vw-context), the h1 should have a font size of 100px. You can make the $vw-context whatever value you want. (I encourage you to read the Sass Break [article](http://sassbreak.com/viewport-relative-headings-with-sass/) about this.)
 
 ## Test it
 + Download the zip file
 + Install grunt and grunt-contrib-sass: `npm install --save-dev`
 + `grunt sass`
 + Open /example/index.html
-
-## Thoughts?
-Tell me.
 
 ## License
 MIT

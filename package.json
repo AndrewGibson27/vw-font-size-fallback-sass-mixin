@@ -1,7 +1,7 @@
 {
   "name": "vw-font-size-fallback-sass-mixin",
-  "version": "1.0.0",
-  "description": "A Sass mixin for font sizing with the vw unit using ems as a fallback",
+  "version": "1.0.1",
+  "description": "An SCSS mixin for font sizing with vw with fallbacks",
   "author": "Andrew Gibson <atgibson27@gmail.com>",
   "main": "index.html",
   "repository": {
@@ -9,7 +9,7 @@
     "url": "https://github.com/AndrewGibson27/vw-font-size-fallback-sass-mixin"
   },
   "bugs": {
-    "url": "https://github.com/AndrewGibson27/vw-font-size-fallback-sass-mixin"
+    "url": "https://github.com/AndrewGibson27/vw-font-size-fallback-sass-mixin/issues"
   },
   "keywords": [
     "sass",
