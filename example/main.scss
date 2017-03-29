@@ -1,42 +1,42 @@
 @mixin vw_with_fallback($font_sizes, $vw_base) {
-	$vw_context: (1280*.01) * 1px;
-	$vw_font_size: ($vw_base/$vw_context) * 1vw;
+  $vw_context: (1280*.01) * 1px;
+  $vw_font_size: ($vw_base/$vw_context) * 1vw;
 
-	@each $list in $font_sizes {
-		$i: index($font-sizes, $list);
-		$curr_bp: nth($list, 1);
-		$curr_fallback: nth($list, 2);
+  @each $list in $font_sizes {
+    $i: index($font-sizes, $list);
+    $curr_bp: nth($list, 1);
+    $curr_fallback: nth($list, 2);
 
-		@if $i == 1 {
-			@media screen and (min-width: #{$curr_bp}) {
-				font-size: $curr_fallback;
-			}
-		}
+    @if $i == 1 {
+      @media screen and (min-width: #{$curr_bp}) {
+        font-size: $curr_fallback;
+      }
+    }
 
-		@else {
-			$use_vw: nth($list, 3);
+    @else {
+      $use_vw: nth($list, 3);
 
-			@if $use_vw {
-				@media screen and (max-width: #{$curr_bp}) {
-					font-size: $curr_fallback;
-					font-size: $vw_font_size;
-				}
-			}
-			@else {
-				@media screen and (max-width: #{$curr_bp}) {
-					font-size: $curr_fallback;
-				}
-			}
-		}
-	}
+      @if $use_vw {
+        @media screen and (max-width: #{$curr_bp}) {
+          font-size: $curr_fallback;
+          font-size: $vw_font_size;
+        }
+      }
+      @else {
+        @media screen and (max-width: #{$curr_bp}) {
+          font-size: $curr_fallback;
+        }
+      }
+    }
+  }
 }
 
 $hed_font_sizes:
-	1281px 160px,
-	1280px 80px true,
-	767px 60px true,
-	400px 50px false;
+  1281px 160px,
+  1280px 80px true,
+  767px 60px true,
+  400px 50px false;
 
 h1 {
-	@include vw_with_fallback($hed_font_sizes, 100px);
+  @include vw_with_fallback($hed_font_sizes, 100px);
 }
